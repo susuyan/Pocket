@@ -1,0 +1,40 @@
+# System Files
+.DS_Store
+Thumbs.db
+.fseventsd
+.Spotlight-V100
+.Trashes
+.ehthumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.bak
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+
+# Trae
+.trae/workspaces/
+.trae/user/
+# Keep .trae/skills if we want to share them, but user moved them out.
+# We'll keep the rest of .trae visible if it has project settings, 
+# but ignore potential local cache/state if we knew the structure.
+# For now, standard ignores are safest.
+
+# Logs
+logs/
+*.log
+
+# Temp
+tmp/
+temp/
