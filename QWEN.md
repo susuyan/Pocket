@@ -17,11 +17,15 @@
 
 ```
 pocket/
+├── .claude/                  # Claude workspace configuration
+│   └── agents/              # Agent configurations for Claude Code
 ├── .trae/                    # Trae workspace configuration
 │   └── documents/
 ├── agents/                   # AI agent definitions and templates
-│   └── writing-agents/       # Multi-stage writing pipeline agents
+│   └── writer.md            # Technical blog writing agent definition
 ├── docs/                     # Project documentation
+│   ├── articles/            # Technical articles and summaries
+│   └── daily-links/         # Daily link collections
 ├── examples/                 # Best practices and examples
 ├── scripts/                  # Automation scripts
 │   └── format-daily-links.sh # Daily links formatter
@@ -40,13 +44,23 @@ pocket/
 5. **风格技术写作 agent 流水线 v1.0.md** - Technical writing agent pipeline (Chinese)
 6. **examples/markdown-best-practices.md** - Detailed Markdown formatting guidelines
 
-### Central Skills & Agents
+### Key Articles & Agent Definitions
+- **docs/articles/agentic-workflow-summary.md** - Summary of agentic workflows and design patterns
+- **agents/writer.md** - Technical blog writing agent focused on creating concise, practice-oriented technical content
+- **AGENTS.md** - Architecture documentation of the full writing agents pipeline (reference only, actual files may be archived)
+
+### Central Skills
 - **skills/link-extractor/SKILL.md** - Primary link extraction skill definition
-- **agents/writing-agents/** - Multi-stage writing pipeline:
-  - `outline-designer.prompt.md` - Creates structured content outlines
-  - `writer.prompt.md` - Generates technical content from outlines
-  - `po-writer.prompt.md` - Quality assurance and style compliance review
-  - `analyst-writer.prompt.md` - Research, analyze, and synthesize content
+- **skills/link-extractor/references/** - Reference materials for link extraction workflows:
+  - `categories.md` - Content classification and sections
+  - `workflow.md` - Processing workflows
+  - `decision-trees.md` - Extraction decision logic
+  - `guide.md` - FAQ, best practices, validation checklist
+  - `language-rules.md` - Language-specific guidelines
+  - `edge-cases.md` - Boundary case handling
+  - `examples.md` - Usage examples
+  - `create-daily-links.md` - Daily links creation process
+  - `daily-links-styles/` - Various output styling formats
 
 ## SKILL Development Framework
 
