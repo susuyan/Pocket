@@ -1,0 +1,42 @@
+name: Convert Prompts
+
+on:
+  push:
+    paths:
+      - 'prompts/**'
+  pull_request:
+    paths:
+      - 'prompts/**'
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Run prompts conversion
+      run: |
+        chmod +x convert_prompts.sh
+        bash convert_prompts.sh
+    
+    - name: Check for changes
+      id: check_changes
+      run: |
+        if git diff --quiet HEAD -- raycast-extensions/prompt-extension/data/prompts.json; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.check_changes.outputs.changed == 'true' && github.event_name == 'push'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add raycast-extensions/prompt-extension/data/prompts.json
+        git commit -m "chore: auto-update prompts.json"
+        git push
